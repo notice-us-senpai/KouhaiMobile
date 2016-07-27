@@ -28,6 +28,7 @@ namespace KouhaiDash
 
             web_view = FindViewById<WebView>(Resource.Id.webview);
             web_view.Settings.JavaScriptEnabled = true;
+            web_view.Settings.UseWideViewPort = true;
             web_view.LoadUrl("http://kouhaidash.herokuapp.com");
 
             web_view.SetWebViewClient(new HelloWebViewClient());
