@@ -12,29 +12,21 @@ namespace KouhaiDash
     [Activity(Label = "KouhaiDash!", MainLauncher = true, Theme = "@android:style/Theme.NoTitleBar", Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        WebView web_view;
+        WebView myWebView;
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
-            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
-
-            base.OnCreate(bundle);
-
-            // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.Main);
-
-            web_view = FindViewById<WebView>(Resource.Id.webview);
-            web_view.Settings.JavaScriptEnabled = true;
-            web_view.Settings.UseWideViewPort = true;
-            web_view.LoadUrl("http://kouhaidash.herokuapp.com");
-
-            web_view.SetWebViewClient(new HelloWebViewClient());
+            myWebView = FindViewById<WebView>(Resource.Id.MainWebView);
+            myWebView.Settings.JavaScriptEnabled = true;
+            myWebView.Settings.UseWideViewPort = true;
+            myWebView.Settings.StandardFontFamily = myWebView.Settings.SansSerifFontFamily;
+            myWebView.LoadUrl("http://kouhaidash.herokuapp.com");
+            myWebView.SetWebViewClient(new KouhaiWebViewClient());
         }
 
-        public class HelloWebViewClient : WebViewClient
+        public class KouhaiWebViewClient : WebViewClient
         {
             public override bool ShouldOverrideUrlLoading(WebView view, string url)
             {
@@ -45,9 +37,9 @@ namespace KouhaiDash
 
         public override bool OnKeyDown(Android.Views.Keycode keyCode, Android.Views.KeyEvent e)
         {
-            if (keyCode == Keycode.Back && web_view.CanGoBack())
+            if (keyCode == Keycode.Back && myWebView.CanGoBack())
             {
-                web_view.GoBack();
+                myWebView.GoBack();
                 return true;
             }
 

@@ -61,7 +61,7 @@ namespace KouhaiDash
 		{
 			
 			// aapt resource value: 0x7f050000
-			public const int webview = 2131034112;
+			public const int MainWebView = 2131034112;
 			
 			static Id()
 			{
