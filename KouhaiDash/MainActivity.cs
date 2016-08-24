@@ -12,7 +12,8 @@ using System.Threading;
 namespace KouhaiDash
 {
     [Activity(Label = "KouhaiDash!", MainLauncher = true, 
-        Icon = "@drawable/icon", Theme = "@android:style/Theme.Light.NoTitleBar")]
+        Icon = "@drawable/icon", Theme = "@android:style/Theme.Light.NoTitleBar",
+        ConfigurationChanges = Android.Content.PM.ConfigChanges.Orientation | Android.Content.PM.ConfigChanges.ScreenSize)]
     public class MainActivity : Activity
     {
         WebView myWebView;
@@ -26,7 +27,7 @@ namespace KouhaiDash
                 "Isn't it a beautiful day today?", true);
 
             new Thread(new ThreadStart(() => {
-                Thread.Sleep(4 * 1000);
+                Thread.Sleep(5 * 1000);
                 this.RunOnUiThread(() => {
                     progressDialog.Dismiss();
                 });
